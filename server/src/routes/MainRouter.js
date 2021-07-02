@@ -4,13 +4,8 @@ import defaultController from '../controllers/DefaultController';
 
 const router = Router();
 
-router.get('/hello', defaultController.helloWorld);
 
-/*
- * To use another controller, use:
- * import controllerName from '../controllers/<ControllerName>';
- * router.get|put|post|delete|use('/<path-name>', <controllerName>.<controllerMethod)
- */
+router.use('/api/pet', defaultController.getPet);
 
 router.use('/api', (req, res) => {
   res.send(`
