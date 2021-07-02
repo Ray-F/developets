@@ -1,9 +1,9 @@
 {
-  "name": "project-paws",
+  "name": "developets",
   "version": "1.0.0",
-  "description": "Project paws project for Dev Hackathon, 2021",
+  "description": "Developets project for Dev Hackathon, 2021",
   "main": "index.js",
-  "repository": "git@github.com:Ray-F/nfteam-blockchain.git",
+  "repository": "git@github.com:Ray-F/project-paws.git",
   "license": "MIT",
   "private": false,
   "scripts": {
