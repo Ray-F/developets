@@ -1,4 +1,4 @@
-# Project Paws
+# Developets
 
 Based on a template repository used to quickly bootstrap MERN applications.
 
