@@ -12,6 +12,7 @@
 .env
 .env.*
 !.env.example
+*/private_keys
 
 # error and debug logs
 npm-debug.log*
