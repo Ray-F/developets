@@ -1,7 +1,7 @@
 {
-  "name": "MERN-Template",
+  "name": "Project Paws",
   "version": "1.0.0",
-  "description": "a MERN stack application",
+  "description": "a MERN stack application for Dev's Hackathon 2021",
   "main": "index.js",
   "repository": "git@github.com:Ray-F/mern-template.git",
   "author": "Raymond Feng <rf.raymondfeng@gmail.com>",
