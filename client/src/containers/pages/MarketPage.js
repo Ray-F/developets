@@ -65,7 +65,7 @@ export default function MarketPage() {
   const classes = useStyles();
 
   const openPet = () => {
-    window.location = '/';
+    window.location = '/pet';
   };
 
   return (
