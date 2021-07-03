@@ -3,7 +3,7 @@ import { mongoService } from '../model/mongodb/MongoService';
 
 const view = async (req, res) => {
   const petRepo = new PetRepository(mongoService);
-  const current = await petRepo.getCoinAndEnergy();
+  const current = await petRepo.getCoinAndHp();
 
   res.json({
              coins: current.coin,

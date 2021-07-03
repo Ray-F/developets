@@ -9,7 +9,7 @@ class PetRepository {
     this.petCollection = mongoService.db.collection('pets');
   }
 
-  async getCoinAndEnergy() {
+  async getCoinAndHp() {
     const dbo = (await this.petCollection.find({}).toArray())[0];
 
     return {

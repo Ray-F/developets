@@ -30,7 +30,7 @@ const buy = async (req, res) => {
 
   // Reduce the wallet of the organisation by the cost of the accessory
   const petRepo = new PetRepository(mongoService);
-  const currentBal = (await petRepo.getCoinAndEnergy()).coin;
+  const currentBal = (await petRepo.getCoinAndHp()).coin;
   await petRepo.setCoin(currentBal - accessoryCost);
 
   if (transferResult) {
@@ -71,7 +71,7 @@ const getMarketplace = async (req, res) => {
 
   return res.json(
     {
-      tokens: (await coinRepo.getCoinAndEnergy()).coin,
+      tokens: (await coinRepo.getCoinAndHp()).coin,
       accessories: <MarketAccessory[]> accessories,
     },
   );
