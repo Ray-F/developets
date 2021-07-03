@@ -5,6 +5,7 @@ import { Box, CircularProgress, Container, Grid, makeStyles } from '@material-ui
 import ItemCard from '../../components/ItemCard';
 import LogoImage from '../../components/LogoImage';
 import Tokens from '../../components/Tokens';
+import LogOut from '../../components/LogOut';
 
 import styled from 'styled-components';
 import Strip from '../../components/Strip';
@@ -76,32 +77,13 @@ export default function MarketPage() {
 
   return (
     <React.Fragment>
-      {/*<div className={classes.appBar}>*/}
-      {/*  <AppBar position="static" style={{ backgroundColor: '#2C2F33' }}>*/}
-      {/*    <Toolbar>*/}
-      {/*      <IconButton*/}
-      {/*        edge="start"*/}
-      {/*        className={classes.marketButton}*/}
-      {/*        color="inherit"*/}
-      {/*        aria-label="menu"*/}
-      {/*        onClick={openPet}*/}
-      {/*      >*/}
-      {/*        <PetIcon />*/}
-      {/*      </IconButton>*/}
-      {/*      <Typography variant="h6" className={classes.title}>*/}
-      {/*        MARKET PLACE*/}
-      {/*      </Typography>*/}
-      {/*      <Typography variant="h6" className={classes.title}>*/}
-      {/*        Tokens: {tokens}*/}
-      {/*      </Typography>*/}
-      {/*    </Toolbar>*/}
-      {/*  </AppBar>*/}
-      {/*</div>*/}
       <Box className={classes.navSection}>
         <LogoImage />
         <Tokens nTokens={tokens === 0 ? "-" : tokens} />
+        <div>
+        <LogOut></LogOut>
+        </div>
       </Box>
-
 
       <Container maxWidth={'lg'}>
         <Grid container>
