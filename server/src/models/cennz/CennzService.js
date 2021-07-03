@@ -1,6 +1,6 @@
 import { Api } from '@cennznet/api';
 
-const NIKAU_WS = 'wss://nikau.centrality.me/public/ws';
+const NIKAU_WS = 'wss://kong2.centrality.me/public/rata/ws';
 
 /**
  * Creates an API client to access CennzNet services.
@@ -32,5 +32,5 @@ async function getClientDetails(client) {
 
 export default {
   createClient,
-  getClientDetails,
-};
+  getClientDetails
+}

@@ -3,8 +3,8 @@ import * as path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import router from './routes/MainRouter';
-
 const app = express();
+
 
 // Setup view engine as pug
 app.set('view engine', 'pug');
@@ -34,4 +34,4 @@ app.use((err, req, res) => {
   res.status(err.status || 500).send(err.message);
 });
 
-module.exports = app;
+module.exports = app

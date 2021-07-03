@@ -1,16 +1,18 @@
 import { Router } from 'express';
+import testRouter from './TestRouter';
+import marketRouter from './MarketRouter';
 
 import defaultController from '../controllers/DefaultController';
 
 const router = Router();
 
-router.get('/hello', defaultController.helloWorld);
+router.use('/test', testRouter);
 
-/*
- * To use another controller, use:
- * import controllerName from '../controllers/<ControllerName>';
- * router.get|put|post|delete|use('/<path-name>', <controllerName>.<controllerMethod)
- */
+router.use('/api/market', marketRouter);
+
+router.use('/api/pet', defaultController.getPet);
+
+router.use('/api/accessory', defaultController.getAccessory);
 
 router.use('/api', (req, res) => {
   res.send(`
