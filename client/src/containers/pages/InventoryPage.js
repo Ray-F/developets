@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import LogoImage from "../../components/LogoImage.js";
+import LogoImage from '../../components/LogoImage.js';
 import nohat from '../../components/images/noHat.png';
 import hat from '../../components/images/withHat.png';
 import BackButton from '../../components/BackButton.js';
@@ -31,15 +31,15 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     marginTop: 201,
     marginLeft: 100,
-    width: 1000
+    width: 1000,
 
   },
 
   hat: {
-    position:'absolute',
+    position: 'absolute',
     marginTop: 199,
     marginLeft: 101,
-    width: 1000
+    width: 1000,
 
   },
 
@@ -52,16 +52,17 @@ const useStyles = makeStyles((theme) => ({
     height: 89,
     opacity: 0,
     transitionDuration: '0.2s',
+    cursor: 'pointer',
 
     '&:hover': {
       transitionDuration: '0.2s',
-      opacity: 0.5
-    }
+      opacity: 0.5,
+    },
   },
 
   content: {
-    transform: 'translateY(-30px)'
-  }
+    transform: 'translateY(-30px)',
+  },
 
 }));
 
@@ -72,7 +73,7 @@ export default function InventoryPage() {
   const [coins, setCoins] = useState(null);
 
   useEffect(() => {
-    fetch("/api/pet", { method: "GET" })
+    fetch('/api/pet', { method: 'GET' })
       .then(async (res) => {
         let resObject = await res.json();
 
@@ -83,8 +84,8 @@ export default function InventoryPage() {
   const [isHatEnabled, setIsHatEnabled] = useState(false);
 
   const changeImage = () => {
-    setIsHatEnabled(true);
-  }
+    setIsHatEnabled(!isHatEnabled);
+  };
 
   return (
     <div className={classes.container}>
@@ -104,5 +105,5 @@ export default function InventoryPage() {
       </div>
       <div className={classes.strip} />
     </div>
-  )
+  );
 }
