@@ -20,8 +20,6 @@ class AccessoryRepository {
     }).map((info) => {
       const { tokenId, attributes, owner } = info;
 
-      console.log(attributes);
-
       return <Accessory>{
         name: attributes[0].asText,
         media: attributes[1].asUrl,

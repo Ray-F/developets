@@ -1,12 +1,16 @@
 import { AccessoryRepository } from '../models/AccessoryRepository';
 import { GLOBAL_ORG } from '../models/Organisation';
+import { PetRepository } from '../models/PetRepository';
+import { mongoService } from '../models/Services';
 
 const buy = async (req, res) => {
   const { orgId, accessoryId, accessoryCost } = req.body;
 
   const accessoryRepo = new AccessoryRepository();
 
-  const availableAccessories = await accessoryRepo.listAvailableAccessories()
+  const availableAccessories = await accessoryRepo.listAvailableAccessories();
+
+  console.log(req.body);
 
   // Find the lowest in the series to transfer
   let lowestAccessorySeries = null;
@@ -26,7 +30,9 @@ const buy = async (req, res) => {
   const transferResult = await accessoryRepo.transfer(orgId, accessoryId, lowestAccessorySeries)
 
   // Reduce the wallet of the organisation by the cost of the accessory
-  GLOBAL_ORG.coin -= accessoryCost
+  const petRepo = new PetRepository(mongoService);
+  const currentBal = (await petRepo.getCoinAndEnergy()).coin;
+  await petRepo.setCoin(currentBal - accessoryCost);
 
   if (transferResult) {
     res.sendStatus(200);
@@ -37,6 +43,8 @@ const buy = async (req, res) => {
 
 const getMarketplace = async (req, res) => {
   const { orgId } = req.query;
+
+  const coinRepo = new PetRepository(mongoService);
 
   const accessoryRepo = new AccessoryRepository();
   const availableAccessories = await accessoryRepo.listAvailableAccessories()
@@ -64,7 +72,7 @@ const getMarketplace = async (req, res) => {
 
   return res.json(
     {
-      tokens: 100,
+      tokens: (await coinRepo.getCoinAndEnergy()).coin,
       accessories: <MarketAccessory[]> accessories,
     },
   );

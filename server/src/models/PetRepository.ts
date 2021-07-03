@@ -9,6 +9,34 @@ class PetRepository {
     this.petCollection = mongoService.db.collection('pets');
   }
 
+  async getCoinAndEnergy() {
+    const dbo = (await this.petCollection.find({}).toArray())[0];
+
+    return {
+      coin: dbo.coin,
+      hp: dbo.hp,
+    }
+  }
+
+  async setCoinAndHp(coin: number, hp: number) {
+    const filter = {}
+    const query = { "$set": {
+        coin: coin,
+        hp: hp
+      }}
+
+    const dbo = this.petCollection.updateOne(filter, query);
+  }
+
+  async setCoin(coin: number) {
+    const filter = {}
+    const query = { "$set": {
+      coin: coin
+    }}
+
+    const dbo = this.petCollection.updateOne(filter, query);
+  }
+
   /**
    * Get a pet based on the organisation's ID (as a Pet belongs to an organisation/team).
    * @param orgId

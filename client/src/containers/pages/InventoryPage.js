@@ -1,20 +1,13 @@
 import { makeStyles } from '@material-ui/core';
 import React, { useState } from 'react';
 import LogoImage from "../../components/LogoImage.js";
-
 import nohat from '../../components/images/noHat.png';
 import hat from '../../components/images/withHat.png';
 import BackButton from '../../components/BackButton.js';
 
 
 const useStyles = makeStyles((theme) => ({
-
-  logoPNG: {
-    position: 'fixed',
-    marginTop: 25,
-    marginLeft: 80,
-  },
-
+  
   container: {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
