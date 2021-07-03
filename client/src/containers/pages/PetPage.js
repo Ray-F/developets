@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 import {
   AppBar,
   Box,
@@ -14,7 +15,7 @@ import {
 import petVideo from '../../resources/pet.mp4';
 
 import LogoImage from '../../components/LogoImage';
-
+import LogOut from '../../components/LogOut';
 import styled from 'styled-components';
 import { getColorForPercentage } from '../../util/Colour';
 import Tokens from '../../components/Tokens';
@@ -144,22 +145,11 @@ export default function IndexPage() {
       <div className={classes.appBar}>
         <AppBar position="static" style={{ backgroundColor: '#2C2F33' }}>
           <LogoImage />
-          {/*<Toolbar>*/}
-          {/*  <IconButton*/}
-          {/*    edge="start"*/}
-          {/*    className={classes.marketButton}*/}
-          {/*    color="inherit"*/}
-          {/*    aria-label="menu"*/}
-          {/*    onClick={openMarket}*/}
-          {/*  >*/}
-          {/*    <StoreIcon />*/}
-          {/*  </IconButton>*/}
-          {/*  <Typography variant="h6" className={classes.title}>*/}
-          {/*    Team ABC*/}
-          {/*  </Typography>*/}
-          {/*  <Button color="inherit">Logout</Button>*/}
-          {/*</Toolbar>*/}
         </AppBar>
+      </div>
+
+      <div>
+        <LogOut></LogOut>
       </div>
 
       <TopBox>
