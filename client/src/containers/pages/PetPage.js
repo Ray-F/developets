@@ -135,7 +135,7 @@ export default function IndexPage() {
     fetch("/api/pet", { method: "GET" })
       .then(async (res) => {
         let resObject = await res.json();
-        
+
         setCoins(resObject.coins);
         setHealth(resObject.hp);
         console.log(resObject);
@@ -229,13 +229,13 @@ export default function IndexPage() {
 
               <SBoxRelative>
                 <StyledBattery
-                  level={pet.energyLevel}
+                  level={health}
                   className={classes.battery}
                   variant="determinate"
-                  value={pet.energyLevel}
+                  value={health}
                 />
                 <Typography variant={'body2'} className={classes.batteryPct}>
-                  <b>{pet.energyLevel} HP</b>
+                  <b>{health} HP</b>
                 </Typography>
               </SBoxRelative>
             </Grid>
