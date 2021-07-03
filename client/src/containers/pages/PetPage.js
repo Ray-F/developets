@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 import {
   AppBar,
   Box,
@@ -48,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   petVideo: {
     position: 'absolute',
     left: '50%',
-    top: '50%',
+    top: '45%',
     transform: 'translate(-50%, -50%)',
   },
 
@@ -59,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     width: 1000,
     maxWidth: '100%',
-    bottom: 100,
+    bottom: -30,
     left: '50%',
     transform: 'translateX(-50%)',
   },
@@ -75,10 +74,20 @@ const useStyles = makeStyles((theme) => ({
     width: 140,
   },
 
+  inventoryButton: {
+    color: '#FFFFFF',
+    border: '4px solid #7289DA',
+    borderRadius: '16px',
+    backgroundColor: 'transparent',
+    margin: 40,
+    marginTop: 40,
+
+    width: 140,
+  },
+
   batteryPct: {
     position: 'relative',
-    top: -10,
-    left: -85,
+    top: -70,
     marginBottom: 10,
   },
 }));
@@ -88,6 +97,8 @@ const StyledBattery = styled(LinearProgress)`
   height: 40px;
   width: 200px;
   margin-bottom: 20px;
+
+  bottom: 60px;
 
   position: relative;
   left: 50%;
@@ -109,6 +120,11 @@ const TopBox = styled(Box)`
   top: 150px;
   transform: translateX(-50%);
   color: white;
+`;
+
+const SBoxRelative = styled(Box)`
+  position: relative;
+  top: -150px;
 `;
 
 export default function IndexPage() {
@@ -198,21 +214,30 @@ export default function IndexPage() {
         {coins !== null ? (
           <Grid container>
             <Grid item xs={4}>
-              <Button className={classes.optionButton} onClick={clickFeed}>
-                <b>Feed Me</b>
+              <Button
+                className={classes.inventoryButton}
+                onClick={() => (window.location = '/inventory')}
+              >
+                <b>Inventory</b>
               </Button>
             </Grid>
 
             <Grid item xs={4}>
-              <StyledBattery
-                level={health}
-                className={classes.battery}
-                variant="determinate"
-                value={health}
-              />
-              <Typography variant={'body2'} className={classes.batteryPct}>
-                {health} HP
-              </Typography>
+              <Button className={classes.optionButton} onClick={clickFeed}>
+                <b>Feed Me</b>
+              </Button>
+
+              <SBoxRelative>
+                <StyledBattery
+                  level={pet.energyLevel}
+                  className={classes.battery}
+                  variant="determinate"
+                  value={pet.energyLevel}
+                />
+                <Typography variant={'body2'} className={classes.batteryPct}>
+                  <b>{pet.energyLevel} HP</b>
+                </Typography>
+              </SBoxRelative>
             </Grid>
 
             <Grid item xs={4}>
