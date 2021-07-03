@@ -16,7 +16,7 @@ import {
     logOut: {
     position: "fixed",
     marginTop: 77,
-    marginLeft: 1200,
+    right: 100,
     },
 
     outButton: {
