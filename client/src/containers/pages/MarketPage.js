@@ -65,8 +65,18 @@ export default function MarketPage() {
   const classes = useStyles();
 
   const openPet = () => {
-    window.location = '/';
+    window.location = '/pet';
   };
+
+  const subtractTokens = (cost) => {
+    setTokens(tokens-cost);
+  }
+
+  const handleUnmount = (index) => {
+    console.log('handle unmount' + index);
+    items.splice(index, 1);
+    setItems(items);
+  }
 
   return (
     <React.Fragment>
@@ -104,10 +114,14 @@ export default function MarketPage() {
               className={classes.gridItem}
             >
               <ItemCard
+                index={i}
                 name={item.accessory.name}
                 cost={item.accessory.cost}
                 amount={item.amount}
                 imageUrl={item.accessory.media}
+                subtractTokens={subtractTokens}
+                handleUnmount={handleUnmount}
+                tokens={tokens}
               />
             </Grid>
           );
