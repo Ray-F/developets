@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -31,8 +31,29 @@ export default function ItemCard(props) {
 
   const classes = useStyles();
 
-  const purchaseItem = () => {
+  const [amount, setAmount] = useState(props.amount);
 
+  useEffect(() => {
+    if (amount === 1) {
+      props.handleUnmount(props.index);
+    }
+  }, [amount])
+
+  const purchaseItem = () => {
+    if (props.tokens - props.cost >= 0) {
+      props.subtractTokens(props.cost);
+      setAmount(amount - 1);
+
+      // todo: need cennznet id
+      // const reqOptions = {
+      //   method: 'POST',
+      //   body: {}
+      // };
+
+      // fetch('...', reqOptions)
+    } else {
+      alert("lmao broke boi");
+    }
   }
 
   return (
@@ -48,7 +69,7 @@ export default function ItemCard(props) {
         <CardContent>
           <div className={classes.details}>
             <Typography variant="h5" component="h2">
-                {props.name} x {props.amount}
+                {props.name} x {amount}
             </Typography>
             <Typography variant="h5" component="h2">
               💸{props.cost}
@@ -57,7 +78,7 @@ export default function ItemCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" className={classes.button}>
+        <Button size="small" className={classes.button} onClick={purchaseItem}>
           Purchase
         </Button>
       </CardActions>
