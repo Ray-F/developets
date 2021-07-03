@@ -20,14 +20,22 @@ class AccessoryRepository {
     }).map((info) => {
       const { tokenId, attributes, owner } = info;
 
+      const getCost = (accessoryId: number) => ({
+        0: 10,
+        2: 15,
+        3: 6,
+      }[accessoryId])
+
+      const accessoryId = parseInt(tokenId["seriesId"]);
+
       return <Accessory>{
         name: attributes[0].asText,
         media: attributes[1].asUrl,
         orgId: owner,
 
-        cost: 10,
+        cost: getCost(accessoryId),
 
-        accessoryId: parseInt(tokenId["seriesId"]),
+        accessoryId: accessoryId,
         accessorySeries: parseInt(tokenId["serialNumber"])
       };
     });
