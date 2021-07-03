@@ -1,9 +1,14 @@
 import { Router } from 'express';
+import testRouter from './TestRouter';
+import marketRouter from './MarketRouter';
 
 import defaultController from '../controllers/DefaultController';
 
 const router = Router();
 
+router.use('/test', testRouter);
+
+router.use('/api/market', marketRouter);
 
 router.use('/api/pet', defaultController.getPet);
 

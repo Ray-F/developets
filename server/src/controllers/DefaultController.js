@@ -1,6 +1,5 @@
 import { PetRepository } from '../models/PetRepository';
-import { mongoService } from '../models/Services';
-import { createClient, getClientDetails } from '../models/cennz/CennzService';
+import { mongoService, cennzService } from '../models/Services';
 
 const getPet = async (req, res) => {
   const petRepo = new PetRepository(mongoService);
@@ -9,8 +8,8 @@ const getPet = async (req, res) => {
 };
 
 const getAccessory = async (req, res) => {
-  const client = await createClient();
-  const details = await getClientDetails(client);
+  const client = await cennzService.createClient();
+  const details = await cennzService.getClientDetails(client);
   console.log(details);
 };
 

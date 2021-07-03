@@ -1,8 +1,7 @@
-import Config from './utils/Config';
 import { PetRepository } from './models/PetRepository';
-import { MongoService } from './models/mongodb/MongoService';
 import { Pet } from './models/Pet';
 import { ObjectId } from 'mongodb';
+import { mongoService } from './models/Services';
 
 /**
  * File for populating database with dummy data.
