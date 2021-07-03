@@ -31,6 +31,10 @@ export default function ItemCard(props) {
 
   const classes = useStyles();
 
+  const purchaseItem = () => {
+
+  }
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -38,7 +42,7 @@ export default function ItemCard(props) {
           component="img"
           alt="Accessory"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={props.imageUrl}
           title="Contemplative Reptile"
         />
         <CardContent>

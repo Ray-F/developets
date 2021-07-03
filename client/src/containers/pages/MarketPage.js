@@ -8,6 +8,7 @@ import {
   Button,
   IconButton,
   makeStyles,
+  CircularProgress
 } from '@material-ui/core';
 
 import PetIcon from '@material-ui/icons/Pets';
@@ -47,24 +48,24 @@ const orgId = 123;
 export default function MarketPage() {
 
   const [items, setItems] = useState([]);
+  const [tokens, setTokens] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/market?orgId=${orgId}`, {method: 'GET'})
-      .then(async (res) => {
-        const resObject = await res.json();
-        setItems(resObject.accessories);
-        console.log(resObject);
-      });
+    fetch(`/api/market?orgId=${orgId}`, { method: 'GET' })
+    .then(async (res) => {
+      const resObject = await res.json();
+      setItems(resObject.accessories);
+      setTokens(resObject.tokens);
+      setLoading(false);
+      console.log(resObject);
+    });
   }, []);
 
   const classes = useStyles();
 
   const openPet = () => {
     window.location = '/';
-  };
-
-  const buyItem = () => {
-
   };
 
   return (
@@ -83,6 +84,9 @@ export default function MarketPage() {
             </IconButton>
             <Typography variant="h6" className={classes.title}>
               MARKET PLACE
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              Tokens: {tokens}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -103,6 +107,7 @@ export default function MarketPage() {
                 name={item.accessory.name}
                 cost={item.accessory.cost}
                 amount={item.amount}
+                imageUrl={item.accessory.media}
               />
             </Grid>
           );
