@@ -17,6 +17,7 @@ import LogoImage from '../../components/LogoImage';
 
 import styled from 'styled-components';
 import { getColorForPercentage } from '../../util/Colour';
+import Tokens from '../../components/Tokens';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -141,6 +142,7 @@ export default function IndexPage() {
 
   return (
     <div className={classes.bg}>
+      <Tokens nTokens={56} />
       <div className={classes.appBar}>
         <AppBar position="static" style={{ backgroundColor: '#2C2F33' }}>
           <LogoImage />

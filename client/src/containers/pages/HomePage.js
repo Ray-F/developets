@@ -1,7 +1,9 @@
 import React from 'react'
 import LogoImage from "../../components/LogoImage.js"
+import DogVideo from "../../resources/dog.mp4"
+import FoxVideo from "../../resources/fox.mp4"
+import KoalaVideo from "../../resources/koala.mp4"
 import {
-  Grid,
   Typography,
   Button,
   makeStyles,
@@ -9,14 +11,13 @@ import {
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        color: 'blue',
-    },
-
     navButton: {
-        backgroundColor: "gray",
+        backgroundColor: "transparent",
+        borderColor: "#7289DA",
+        borderWidth: 4,
         margin: 40,
         marginTop: 40,
+        borderRadius: 16,
     },
 
     boxRight: {
@@ -25,28 +26,64 @@ const useStyles = makeStyles((theme) => ({
         top: 35,
     },
 
-    headText: {
-        position: 'fixed',
-        marginTop: 60,
-        marginLeft: 290,
-    },
-
-    logoPNG: {
-        position: 'fixed',
-        marginTop: 25,
-        marginLeft: 80,
-    },
-
-    whiteTextLogo: {
+    whiteBodyText: {
         color: "white",
-        fontWeight: 600,
-        fontFamily: "Rubik",
+        fontFamily: "Arial",
+        fontSize: 19,
     },
 
-    whiteText: {
+    whiteButtonText: {
         color: "white",
         fontFamily: "Rubik",
-        fontStyle: "italic",
+        fontSize: 18,
+    },
+
+    whiteBlurbText: {
+        color: "white",
+        fontFamily: "Rubik",
+        fontSize: 27,
+    },
+
+    blurbBox: {
+        position: "fixed",
+        marginTop: 240,
+        marginLeft: 200,
+    },
+
+    bodyBox: {
+        position: "fixed",
+        marginTop: 380,
+        marginLeft: 200,
+    },
+
+    startButton: {
+        position: "fixed",
+        borderColor: "#7289DA",
+        borderWidth: 4,
+        marginTop: 540,
+        marginLeft: 380,
+        borderRadius: 16,
+    },
+
+    dog: {
+        position: "fixed",
+        marginTop: 160,
+        marginLeft: 850,
+        transform: "rotate(-35deg)",
+    },
+
+    fox: {
+        position: "fixed",
+        marginTop: 240,
+        marginLeft: 1100,
+        transform: "rotate(35deg)",
+    },
+
+    koala: {
+        position: "fixed",
+        marginTop: 360,
+        marginLeft: 870,
+        transform: "rotate(-10deg)",
     },
 
 }));
@@ -55,33 +92,77 @@ export default function HomePage() {
 
     const classes = useStyles();
 
+    const getStarted = () => {
+        window.location = './PetPage.js';
+      };
+
     return (
         <React.Fragment>
-            <div style={{
-                backgroundColor: "blue",}}
-                >
+            <div>
                 <div>
                         <Box className={classes.boxRight}>
                             <Button className={classes.navButton}
-                                variant="contained" 
-                                color="primary">
-                                <Typography>
+                                variant="outlined"
+                                >
+                                <Typography className={classes.whiteButtonText}>
                                 Log In
                                 </Typography> 
                             </Button>
                             <Button className={classes.navButton}
-                                variant="contained" 
-                                color="primary">
-                                <Typography>
+                                variant="outlined" 
+                            >
+                                <Typography className={classes.whiteButtonText}>
                                     Sign Up
                                 </Typography>
                             </Button>
                         </Box>
                 </div>
 
-                <div className={classes.logoPNG}>
+                <div>
                     <LogoImage></LogoImage>
                 </div>
+
+                <div>
+                <Box className={classes.blurbBox} width="40%">
+                    <Typography className={classes.whiteBlurbText}>
+                        Introduce an interactive virtual team pet to your workplace
+                    </Typography>
+                </Box>
+
+                <Box className={classes.bodyBox} width="40%">
+                    <Typography className={classes.whiteButtonText}>
+                        Developets is the best platform to encourage better team performance and motivation through a fun and interactive team mascot.
+                    </Typography>
+                </Box>
+                </div>
+
+                <div>
+                    <Button 
+                    className={classes.startButton}
+                    variant="outlined" 
+                    onClick={getStarted}
+                    >
+                        <Typography className={classes.whiteButtonText}>
+                            Get Started
+                        </Typography>
+                    </Button>
+                </div>
+
+                <div>
+                <video className={classes.dog} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+                    <source src={DogVideo} type={'video/mp4'} />
+                </video>
+
+                <video className={classes.fox} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+                    <source src={FoxVideo} type={'video/mp4'} />
+                </video>
+
+                <video className={classes.koala} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+                    <source src={KoalaVideo} type={'video/mp4'} />
+                </video>
+
+                </div>
+
             </div>
         </React.Fragment>
     );

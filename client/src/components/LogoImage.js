@@ -8,14 +8,14 @@ import {
 
     logoPNG: {
         position: 'fixed',
-        marginTop: 20,
-        marginLeft: 50,
+        marginTop: 40,
+        marginLeft: 100,
     },
 
     whiteTextLogo: {
         position: 'fixed',
-        marginTop: 40,
-        marginLeft: 220,
+        marginTop: 60,
+        marginLeft: 270,
         color: "white",
         fontWeight: 600,
         fontFamily: "Rubik",
@@ -23,8 +23,8 @@ import {
 
     whiteText: {
         position: 'fixed',
-        marginTop: 90,
-        marginLeft: 220,
+        marginTop: 110,
+        marginLeft: 270,
         color: "white",
         fontFamily: "Rubik",
         fontStyle: "italic",
@@ -37,7 +37,7 @@ export default function LogoImage() {
     const classes = useStyles();
 
     return (
-    <div>
+    <div className={classes.container}>
         <img src={logoImage} alt="Logo Image" width="160" height="120" className={classes.logoPNG}></img>
             <Typography className={classes.whiteTextLogo} variant="h3">
                 Developets
