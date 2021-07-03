@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import dummyController from '../controllers/DummyDataController'
+import dummyController from '../controller/DummyDataController'
 
 const router = Router();
 

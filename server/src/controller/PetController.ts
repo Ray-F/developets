@@ -1,5 +1,5 @@
-import { PetRepository } from '../models/PetRepository';
-import { mongoService } from '../models/Services';
+import { PetRepository } from '../repository/PetRepository';
+import { mongoService } from '../model/mongodb/MongoService';
 
 const view = async (req, res) => {
   const petRepo = new PetRepository(mongoService);

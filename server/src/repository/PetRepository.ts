@@ -1,6 +1,6 @@
-import { Collection, MongoClient, ObjectId } from 'mongodb';
-import { Pet } from './Pet';
-import { MongoService } from './mongodb/MongoService';
+import { Collection, ObjectId } from 'mongodb';
+import { Pet } from '../model/Pet';
+import { MongoService } from '../model/mongodb/MongoService';
 
 class PetRepository {
   private petCollection: Collection<any>;

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import petController  from '../controllers/PetController';
+import petController  from '../controller/PetController';
 
 const router = Router();
 

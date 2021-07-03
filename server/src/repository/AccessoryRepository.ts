@@ -1,5 +1,5 @@
-import cennzService from './cennz/CennzService';
-import { Organisation } from './Organisation';
+import cennzService from '../model/cennz/CennzService';
+import { Organisation } from '../model/Organisation';
 
 class AccessoryRepository {
 

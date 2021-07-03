@@ -1,5 +1,5 @@
 import { Db, MongoClient } from 'mongodb';
-import Config from '../../utils/Config';
+import Config from '../../util/Config';
 
 class MongoService {
   private readonly client: MongoClient;
@@ -28,6 +28,11 @@ class MongoService {
   }
 }
 
+
+const mongoService = new MongoService(Config.MONGODB_URI, 'developets-prod');
+mongoService.init();
+
 export {
+  mongoService,
   MongoService,
 };

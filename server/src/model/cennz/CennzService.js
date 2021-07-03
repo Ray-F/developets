@@ -1,7 +1,7 @@
 import { Api } from '@cennznet/api';
 import { Keyring } from '@polkadot/keyring';
 import fs from 'fs';
-import Config from '../../utils/Config';
+import Config from '../../util/Config';
 
 const RATA_PROVIDER = 'wss://kong2.centrality.me/public/rata/ws';
 

@@ -1,16 +1,6 @@
-import { Keyring } from '@polkadot/keyring';
-import fs from 'fs';
-import { AccessoryRepository } from '../models/AccessoryRepository';
+import { AccessoryRepository } from '../repository/AccessoryRepository';
 
-import cennzService from '../models/cennz/CennzService';
-
-const mockAccessory = {
-  name: 'Sunglasses',
-  media: 'https://d29fhpw069ctt2.cloudfront.net/icon/image/74229/preview.svg',
-  orgId: null,
-  cost: 5,
-  accessoryId: 10,
-};
+import cennzService from '../model/cennz/CennzService';
 
 const createCollection = async (req, res, next) => {
   const api = await cennzService.createClient();

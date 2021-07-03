@@ -1,7 +1,6 @@
-import { AccessoryRepository } from '../models/AccessoryRepository';
-import { GLOBAL_ORG } from '../models/Organisation';
-import { PetRepository } from '../models/PetRepository';
-import { mongoService } from '../models/Services';
+import { AccessoryRepository } from '../repository/AccessoryRepository';
+import { PetRepository } from '../repository/PetRepository';
+import { mongoService } from '../model/mongodb/MongoService';
 
 const buy = async (req, res) => {
   const { orgId, accessoryId, accessoryCost } = req.body;
