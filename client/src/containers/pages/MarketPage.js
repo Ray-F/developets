@@ -91,9 +91,21 @@ export default function MarketPage() {
       <Grid container>
         {items.map((item, i) => {
           return (
-          <Grid item key={i} xs={12} sm={6} md={3} className={classes.gridItem}>
-            <ItemCard name={item.accessory.name} cost={item.accessory.cost} amount={item.amount}/>
-          </Grid>)
+            <Grid
+              item
+              key={i}
+              xs={12}
+              sm={6}
+              md={3}
+              className={classes.gridItem}
+            >
+              <ItemCard
+                name={item.accessory.name}
+                cost={item.accessory.cost}
+                amount={item.amount}
+              />
+            </Grid>
+          );
         })}
       </Grid>
 
