@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import testRouter from './TestRouter';
 import marketRouter from './MarketRouter';
-
-import defaultController from '../controllers/DefaultController';
+import petRouter from './PetRouter';
 
 const router = Router();
 
@@ -10,9 +9,7 @@ router.use('/test', testRouter);
 
 router.use('/api/market', marketRouter);
 
-router.use('/api/pet', defaultController.getPet);
-
-router.use('/api/accessory', defaultController.getAccessory);
+router.use('/api/pet', petRouter);
 
 router.use('/api', (req, res) => {
   res.send(`

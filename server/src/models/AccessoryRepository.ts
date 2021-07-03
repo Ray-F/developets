@@ -1,4 +1,5 @@
 import cennzService from './cennz/CennzService';
+import { Organisation } from './Organisation';
 
 class AccessoryRepository {
 
