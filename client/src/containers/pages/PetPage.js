@@ -19,13 +19,33 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   bg: {
-    background: `url(http://hdlatestwallpaper.com/wp-content/uploads/2015/04/Dog-House.jpg)`,
+    height: '100vh',
+    width: '100vw',
+    backgroundImage: `url("http://hdlatestwallpaper.com/wp-content/uploads/2015/04/Dog-House.jpg")`,
+    backgroundPosition: 'center',
+  },
+  strip: {
+    position: 'fixed',
+    bottom: 0,
+    width: '100%',
+    height: '20px',
+    borderStyle: 'solid',
+    borderColor: '#7289DA',
+    backgroundColor: '#7289DA',
   },
 }));
 
 
 
 export default function IndexPage() {
+
+  useEffect(() => {
+    // fetch("http", { method: "GET" })
+    // .then(async (res) => {
+    //   let resObject = await res.json();
+    // });
+
+  }, []);
 
   const classes = useStyles();
 
@@ -34,9 +54,9 @@ export default function IndexPage() {
   }
 
   return (
-    <React.Fragment>
+    <div className={classes.bg}>
       <div className={classes.appBar}>
-        <AppBar position="static">
+        <AppBar position="static" style={{ backgroundColor: '#2C2F33' }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -50,15 +70,12 @@ export default function IndexPage() {
             <Typography variant="h6" className={classes.title}>
               Team ABC
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit">Logout</Button>
           </Toolbar>
         </AppBar>
       </div>
 
-      <div className={classes.bg}>
-
-      </div>
-      
-    </React.Fragment>
+      <div className={classes.strip} />
+    </div>
   );
 }
