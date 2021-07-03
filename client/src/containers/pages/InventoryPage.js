@@ -1,18 +1,13 @@
 import { makeStyles } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LogoImage from "../../components/LogoImage.js";
-
 import nohat from '../../components/images/noHat.png';
 import hat from '../../components/images/withHat.png';
+import BackButton from '../../components/BackButton.js';
+import Tokens from '../../components/Tokens';
 
 
 const useStyles = makeStyles((theme) => ({
-
-  logoPNG: {
-    position: 'fixed',
-    marginTop: 25,
-    marginLeft: 80,
-  },
 
   container: {
     backgroundRepeat: 'no-repeat',
@@ -35,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     marginTop: 201,
     marginLeft: 100,
+    width: 1000
 
   },
 
@@ -42,16 +38,17 @@ const useStyles = makeStyles((theme) => ({
     position:'absolute',
     marginTop: 199,
     marginLeft: 101,
+    width: 1000
 
   },
 
   hitbox: {
     position: 'absolute',
     backgroundColor: 'rgba(0, 0, 0, 1)',
-    width: 121,
-    left: 930,
+    width: 89,
+    left: 708,
     top: 200,
-    height: 121,
+    height: 89,
     opacity: 0,
     transitionDuration: '0.2s',
 
@@ -67,6 +64,17 @@ const useStyles = makeStyles((theme) => ({
 export default function InventoryPage() {
   const classes = useStyles();
 
+  const [coins, setCoins] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/pet", { method: "GET" })
+      .then(async (res) => {
+        let resObject = await res.json();
+
+        setCoins(resObject.coins);
+      });
+  }, []);
+
   const [isHatEnabled, setIsHatEnabled] = useState(false);
 
   const changeImage = () => {
@@ -75,9 +83,11 @@ export default function InventoryPage() {
 
   return (
     <div className={classes.container}>
-      <div className={classes.logoPNG}>
-        <LogoImage></LogoImage>
+      <BackButton />
+      <Tokens nTokens={coins} />
 
+      <div className={classes.logoPNG}>
+        <LogoImage />
         {isHatEnabled ? (
           <img src={hat} className={classes.hat} />
         ) : (

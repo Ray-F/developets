@@ -36,6 +36,12 @@ const Simg = styled.img`
   top: 8px;
 `
 
+const SCardMedia = styled(CardMedia)`
+  &.MuiCardMedia-img {
+    object-fit: contain !important;
+  }
+`
+
 export default function ItemCard(props) {
 
   const classes = useStyles();
@@ -84,10 +90,10 @@ export default function ItemCard(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
+        <SCardMedia
           component="img"
           alt="Accessory"
-          height="140"
+          height="200"
           image={props.imageUrl}
           title="Contemplative Reptile"
         />
