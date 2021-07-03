@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
 
     navButton: {
         backgroundColor: "gray",
-        margin: 15,
-        spacing: 20,
+        margin: 40,
+        marginTop: 40,
     },
 
     boxRight: {
@@ -25,16 +25,28 @@ const useStyles = makeStyles((theme) => ({
         top: 35,
     },
 
-    centerLeft: {
+    headText: {
         position: 'fixed',
-        marginTop: 40,
-        marginLeft: 200,
+        marginTop: 60,
+        marginLeft: 290,
     },
 
     logoPNG: {
         position: 'fixed',
-        marginTop: 60,
-        zIndex: 100,
+        marginTop: 25,
+        marginLeft: 80,
+    },
+
+    whiteTextLogo: {
+        color: "white",
+        fontWeight: 600,
+        fontFamily: "Rubik",
+    },
+
+    whiteText: {
+        color: "white",
+        fontFamily: "Rubik",
+        fontStyle: "italic",
     },
 
 }));
@@ -69,21 +81,6 @@ export default function HomePage() {
 
                 <div className={classes.logoPNG}>
                     <LogoImage></LogoImage>
-                </div>
-
-                <div>
-                    <Grid 
-                    className={classes.centerLeft}
-                    direction="column"
-                    justify="center"
-                    alignItems="baseline">
-                        <Typography variant="h3">
-                            Developets
-                        </Typography>
-                        <Typography variant="h6">
-                            Your favourite virtual pet
-                        </Typography>
-                    </Grid>
                 </div>
             </div>
         </React.Fragment>
