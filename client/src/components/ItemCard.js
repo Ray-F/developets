@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+import tokenImg from '../../src/components/images/tokens.png';
+import styled from 'styled-components';
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +28,13 @@ const useStyles = makeStyles({
     color: 'white',
   }
 });
+
+const Simg = styled.img`
+  width: 30px;
+  
+  position: relative;
+  top: 8px;
+`
 
 export default function ItemCard(props) {
 
@@ -69,10 +78,10 @@ export default function ItemCard(props) {
         <CardContent>
           <div className={classes.details}>
             <Typography variant="h5" component="h2">
-                {props.name} x {amount}
+              {props.name} x {amount}
             </Typography>
             <Typography variant="h5" component="h2">
-              💸{props.cost}
+              <Simg src={tokenImg}  alt={"token"} />{ props.cost}
             </Typography>
           </div>
         </CardContent>

@@ -1,19 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect, useState } from 'react';
 
-import {
-  Grid,
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  IconButton,
-  makeStyles,
-  CircularProgress
-} from '@material-ui/core';
-
-import PetIcon from '@material-ui/icons/Pets';
+import { Box, CircularProgress, Container, Grid, makeStyles } from '@material-ui/core';
 
 import ItemCard from '../../components/ItemCard';
+import LogoImage from '../../components/LogoImage';
+import Tokens from '../../components/Tokens';
+
+import styled from 'styled-components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +34,18 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     padding: '20px',
   },
+  navSection: {
+    height: 150,
+  },
 }));
+
+const SCircularProgress = styled(CircularProgress)`
+  position: fixed;
+  left: calc(50% - 15px);
+  top: calc(50% - 15px);
+  
+  color: white;
+`
 
 const orgId = 123;
 
@@ -53,13 +57,13 @@ export default function MarketPage() {
 
   useEffect(() => {
     fetch(`/api/market?orgId=${orgId}`, { method: 'GET' })
-    .then(async (res) => {
-      const resObject = await res.json();
-      setItems(resObject.accessories);
-      setTokens(resObject.tokens);
-      setLoading(false);
-      console.log(resObject);
-    });
+      .then(async (res) => {
+        const resObject = await res.json();
+        setItems(resObject.accessories);
+        setTokens(resObject.tokens);
+        setLoading(false);
+        console.log(resObject);
+      });
   }, []);
 
   const classes = useStyles();
@@ -69,64 +73,71 @@ export default function MarketPage() {
   };
 
   const subtractTokens = (cost) => {
-    setTokens(tokens-cost);
-  }
+    setTokens(tokens - cost);
+  };
 
   const handleUnmount = (index) => {
     console.log('handle unmount' + index);
     items.splice(index, 1);
     setItems(items);
-  }
+  };
 
   return (
     <React.Fragment>
-      <div className={classes.appBar}>
-        <AppBar position="static" style={{ backgroundColor: '#2C2F33' }}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.marketButton}
-              color="inherit"
-              aria-label="menu"
-              onClick={openPet}
-            >
-              <PetIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              MARKET PLACE
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-              Tokens: {tokens}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </div>
+      {/*<div className={classes.appBar}>*/}
+      {/*  <AppBar position="static" style={{ backgroundColor: '#2C2F33' }}>*/}
+      {/*    <Toolbar>*/}
+      {/*      <IconButton*/}
+      {/*        edge="start"*/}
+      {/*        className={classes.marketButton}*/}
+      {/*        color="inherit"*/}
+      {/*        aria-label="menu"*/}
+      {/*        onClick={openPet}*/}
+      {/*      >*/}
+      {/*        <PetIcon />*/}
+      {/*      </IconButton>*/}
+      {/*      <Typography variant="h6" className={classes.title}>*/}
+      {/*        MARKET PLACE*/}
+      {/*      </Typography>*/}
+      {/*      <Typography variant="h6" className={classes.title}>*/}
+      {/*        Tokens: {tokens}*/}
+      {/*      </Typography>*/}
+      {/*    </Toolbar>*/}
+      {/*  </AppBar>*/}
+      {/*</div>*/}
+      <Box className={classes.navSection}>
+        <LogoImage />
+        <Tokens nTokens={tokens === 0 ? "-" : tokens} />
+      </Box>
 
-      <Grid container>
-        {items.map((item, i) => {
-          return (
-            <Grid
-              item
-              key={i}
-              xs={12}
-              sm={6}
-              md={3}
-              className={classes.gridItem}
-            >
-              <ItemCard
-                index={i}
-                name={item.accessory.name}
-                cost={item.accessory.cost}
-                amount={item.amount}
-                imageUrl={item.accessory.media}
-                subtractTokens={subtractTokens}
-                handleUnmount={handleUnmount}
-                tokens={tokens}
-              />
-            </Grid>
-          );
-        })}
-      </Grid>
+
+      <Container maxWidth={'lg'}>
+        <Grid container>
+          {items.length === 0 ? <SCircularProgress /> : items.map((item, i) => {
+            return (
+              <Grid
+                item
+                key={i}
+                xs={12}
+                sm={6}
+                md={3}
+                className={classes.gridItem}
+              >
+                <ItemCard
+                  index={i}
+                  name={item.accessory.name}
+                  cost={item.accessory.cost}
+                  amount={item.amount}
+                  imageUrl={item.accessory.media}
+                  subtractTokens={subtractTokens}
+                  handleUnmount={handleUnmount}
+                  tokens={tokens}
+                />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Container>
 
       <div className={classes.strip} />
     </React.Fragment>

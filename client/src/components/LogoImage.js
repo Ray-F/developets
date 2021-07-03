@@ -37,7 +37,7 @@ export default function LogoImage() {
     const classes = useStyles();
 
     return (
-    <div>
+    <div className={classes.container}>
         <img src={logoImage} alt="Logo Image" width="160" height="120" className={classes.logoPNG}></img>
             <Typography className={classes.whiteTextLogo} variant="h3">
                 Developets

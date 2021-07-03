@@ -21,15 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Tokens() {
+export default function Tokens({ nTokens }) {
   const classes = useStyles();
-
-  const [nTokens, setNTokens] = useState(null);
-
-  useEffect(() => {
-    setNTokens(10);
-  }, []);
-
   return (
     <div>
       <img
@@ -38,7 +31,7 @@ export default function Tokens() {
         width="60"
         height="60"
         className={classes.tokensPNG}
-      ></img>
+      />
       <Typography className={classes.tokensNumber} variant="h4">
         {nTokens === null ? <CircularProgress /> : nTokens}
       </Typography>
