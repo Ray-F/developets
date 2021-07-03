@@ -3,10 +3,8 @@ import * as path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import router from './routes/MainRouter';
-import { MongoService } from './models/mongodb/MongoService';
-import Config from './utils/Config';
-
 const app = express();
+
 
 // Setup view engine as pug
 app.set('view engine', 'pug');
