@@ -9,26 +9,21 @@ const useStyles = makeStyles((themes) => ({
     border: '4px solid #7289DA',
     borderRadius: '16px',
     backgroundColor: 'transparent',
-    marginTop: 600,
+    marginTop: 640,
     width: 140,
     left: '50%',
     transform: 'translateX(-50%)',
-
-
   },
-
-
 }));
 
 export default function BackButton() {
   const classes = useStyles();
   return (
-    <Button className={classes.button}
-            onClick={() => (window.location = '/pet')}>
+    <Button
+      className={classes.button}
+      onClick={() => (window.location = '/pet')}
+    >
       <b>Back</b>
     </Button>
   );
 }
-
-
-
