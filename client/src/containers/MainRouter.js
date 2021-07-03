@@ -9,12 +9,9 @@ export default function MainRouter() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={'/'} component={PetPage} />
+        <Route exact path={'/'} component={HomePage} />
         <Route exact path={'/market'} component={MarketPage} />
-        <Route exact path={'/homepage'} component={HomePage} />
-
-        {/* Default path if nothing matches */}
-        <Route path={'/'} component={PetPage} />
+        <Route exact path={'/pet'} component={PetPage} />
       </Switch>
     </BrowserRouter>
   );
