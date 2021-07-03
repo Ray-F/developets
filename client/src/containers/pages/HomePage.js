@@ -1,20 +1,15 @@
-import React from 'react'
-import LogoImage from "../../components/LogoImage.js"
-import DogVideo from "../../resources/dog.mp4"
-import FoxVideo from "../../resources/fox.mp4"
-import KoalaVideo from "../../resources/koala.mp4"
-import {
-  Typography,
-  Button,
-  makeStyles,
-  Box
-} from '@material-ui/core';
+import React from 'react';
+import LogoImage from '../../components/LogoImage.js';
+import DogVideo from '../../resources/dog.mp4';
+import FoxVideo from '../../resources/fox.mp4';
+import KoalaVideo from '../../resources/koala.mp4';
+import { Typography, Button, makeStyles, Box } from '@material-ui/core';
 import Strip from '../../components/Strip';
 
 const useStyles = makeStyles((theme) => ({
   navButton: {
-    backgroundColor: "transparent",
-    borderColor: "#7289DA",
+    backgroundColor: 'transparent',
+    borderColor: '#7289DA',
     borderWidth: 4,
     margin: 40,
     marginTop: 40,
@@ -28,38 +23,38 @@ const useStyles = makeStyles((theme) => ({
   },
 
   whiteBodyText: {
-    color: "white",
-    fontFamily: "Arial",
+    color: 'white',
+    fontFamily: 'Arial',
     fontSize: 19,
   },
 
   whiteButtonText: {
-    color: "white",
-    fontFamily: "Rubik",
+    color: 'white',
+    fontFamily: 'Rubik',
     fontSize: 18,
   },
 
   whiteBlurbText: {
-    color: "white",
-    fontFamily: "Rubik",
+    color: 'white',
+    fontFamily: 'Rubik',
     fontSize: 27,
   },
 
   blurbBox: {
-    position: "fixed",
-    marginTop: 240,
+    position: 'fixed',
+    marginTop: 255,
     marginLeft: 200,
   },
 
   bodyBox: {
-    position: "fixed",
-    marginTop: 380,
+    position: 'fixed',
+    marginTop: 370,
     marginLeft: 200,
   },
 
   startButton: {
-    position: "fixed",
-    borderColor: "#7289DA",
+    position: 'fixed',
+    borderColor: '#7289DA',
     borderWidth: 4,
     marginTop: 540,
     marginLeft: 380,
@@ -67,36 +62,34 @@ const useStyles = makeStyles((theme) => ({
   },
 
   dog: {
-    position: "fixed",
+    position: 'fixed',
     marginTop: 160,
     marginLeft: 850,
-    transform: "rotate(-35deg)",
+    transform: 'rotate(-35deg)',
   },
 
   fox: {
-    position: "fixed",
+    position: 'fixed',
     marginTop: 240,
     marginLeft: 1100,
-    transform: "rotate(35deg)",
+    transform: 'rotate(35deg)',
   },
 
   koala: {
-    position: "fixed",
+    position: 'fixed',
     marginTop: 360,
     marginLeft: 870,
-    transform: "rotate(-10deg)",
+    transform: 'rotate(-10deg)',
   },
 
   bodyMain: {
     width: '100vw',
     height: '100vh',
     backgroundColor: 'black !important',
-  }
-
+  },
 }));
 
 export default function HomePage() {
-
   const classes = useStyles();
 
   const getStarted = () => {
@@ -108,16 +101,12 @@ export default function HomePage() {
       <div className={classes.bodyMain}>
         <div>
           <Box className={classes.boxRight}>
-            <Button className={classes.navButton}
-                    variant="outlined"
-            >
+            <Button className={classes.navButton} variant="outlined">
               <Typography className={classes.whiteButtonText}>
                 Log In
               </Typography>
             </Button>
-            <Button className={classes.navButton}
-                    variant="outlined"
-            >
+            <Button className={classes.navButton} variant="outlined">
               <Typography className={classes.whiteButtonText}>
                 Sign Up
               </Typography>
@@ -138,7 +127,8 @@ export default function HomePage() {
 
           <Box className={classes.bodyBox} width="40%">
             <Typography className={classes.whiteButtonText}>
-              Developets is the best platform to encourage better team performance and motivation through a fun and interactive team mascot.
+              Developets is the best platform to encourage better team
+              performance and motivation through a fun and interactive mascot.
             </Typography>
           </Box>
         </div>
@@ -156,20 +146,39 @@ export default function HomePage() {
         </div>
 
         <div>
-          <video className={classes.dog} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+          <video
+            className={classes.dog}
+            autoPlay={true}
+            muted={true}
+            width={270}
+            height={270}
+            loop={true}
+          >
             <source src={DogVideo} type={'video/mp4'} />
           </video>
 
-          <video className={classes.fox} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+          <video
+            className={classes.fox}
+            autoPlay={true}
+            muted={true}
+            width={270}
+            height={270}
+            loop={true}
+          >
             <source src={FoxVideo} type={'video/mp4'} />
           </video>
 
-          <video className={classes.koala} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+          <video
+            className={classes.koala}
+            autoPlay={true}
+            muted={true}
+            width={270}
+            height={270}
+            loop={true}
+          >
             <source src={KoalaVideo} type={'video/mp4'} />
           </video>
-
         </div>
-
       </div>
 
       <Strip />
