@@ -9,8 +9,3 @@ mongoService.init();
 export {
   mongoService,
 };
-
-export const cennzService = {
-  createClient: cennz.createClient,
-  getClientDetails: cennz.getClientDetails
-}

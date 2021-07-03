@@ -1,6 +1,15 @@
 import { Keyring } from '@polkadot/keyring';
 import fs from 'fs';
-import { cennzService } from '../models/Services';
+import { AccessoryRepository } from '../models/AccessoryRepository';
+
+
+const mockAccessory = {
+  name: 'Sunglasses',
+  media: 'https://d29fhpw069ctt2.cloudfront.net/icon/image/74229/preview.svg',
+  orgId: null,
+  cost: 5,
+  accessoryId: 10,
+};
 
 
 /**
@@ -8,77 +17,48 @@ import { cennzService } from '../models/Services';
  */
 const generateIdentity = () => {
   const keyring = new Keyring({ type: 'sr25519' });
-  const json = JSON.parse(fs.readFileSync("private_keys/rata.json").toString());
+  const json = JSON.parse(fs.readFileSync('private_keys/rata.json').toString());
   console.log(json);
   const identity = keyring.addFromJson(json);
-  identity.decodePkcs8("rata");
+  identity.decodePkcs8('rata');
 
   return identity;
-}
+};
 
 const createCollection = async (req, res, next) => {
   const api = await cennzService.createClient();
   const identity = generateIdentity();
 
-  const collectionName = "developets-accessories-1";
-  const mdBaseUri = "ipfs";
+  const collectionName = 'developets-accessories-1';
+  const mdBaseUri = 'ipfs';
 
   let respCode = null;
   await api.tx.nft.createCollection(collectionName, mdBaseUri, null)
     .signAndSend(identity, {}, (res) => {
-      console.log(res.status.toHuman(true))
+      console.log(res.status.toHuman(true));
     });
 
-  res.json(200)
+  res.json(200);
+};
+
+
+const mintToken = async (req, res) => {
+  const repo = new AccessoryRepository();
+
+  await repo.create(mockAccessory);
+
+  res.json("Test");
+};
+
+const list = async (req, res) => {
+  const repo = new AccessoryRepository();
+
+  res.json(await repo.listAvailableAccessories());
 }
-
-const mintToken = async (req, res, next) => {
-  const api = await cennzService.createClient();
-  const identity = generateIdentity();
-
-  const collectionId = 2;
-  const quantity = 1;
-  const creator = identity.address;
-
-  /*
-   * These attributes are saved inside the NFT that is minted, and cannot be changed.
-   */
-  const attributes = [
-    // The URL of accessory image / other media asset
-    { 'Url': 'https://www.rayf.me' },
-
-    // The name of the accessory
-    { 'Text': "New accessory 1" },
-
-    // The time at which the NFT is created (i.e. now)
-    { 'Timestamp': new Date().valueOf() },
-  ]
-
-  let respCode = null;
-  await api.tx.nft.mintSeries(collectionId, quantity, creator, attributes, null, null)
-    .signAndSend(identity, {}, (res) => {
-      console.log(res.toHuman())
-      if (res.status.isFinalized) {
-        respCode = 200;
-      }
-    });
-  res.json(respCode);
-}
-
-const getTokens = async (req, res, next) => {
-  const api = await cennzService.createClient();
-
-  const collectionId = 2;
-
-  const result = await api.derive.nft.tokenInfoForCollection(collectionId);
-  res.json(result);
-}
-
-
 
 
 export default {
   createCollection,
-  getTokens,
-  mintToken
-}
+  list,
+  mintToken,
+};

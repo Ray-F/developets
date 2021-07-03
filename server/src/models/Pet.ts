@@ -5,7 +5,7 @@ interface Pet {
   orgId: ObjectId
 
   name: string
-  lifeEssence: number
+  energyLevel: number
   creationDate: Date
 }
 

@@ -1,15 +1,22 @@
 import { Api } from '@cennznet/api';
+import { Keyring } from '@polkadot/keyring';
+import fs from 'fs';
+import Config from '../../utils/Config';
 
-const NIKAU_WS = 'wss://kong2.centrality.me/public/rata/ws';
+const RATA_PROVIDER = 'wss://kong2.centrality.me/public/rata/ws';
+
+const collectionId = 2;
+
+const accountAddress = Config.CENNZNET_RATA_ADDRESS;
 
 /**
  * Creates an API client to access CennzNet services.
  */
 async function createClient() {
   // Create the API and wait until ready
-  const api = await Api.create({ provider: NIKAU_WS });
+  const api = await Api.create({ provider: RATA_PROVIDER });
 
-  console.log('[SERVER] CennzNet connected');
+  console.log('[Server] CennzNet connected');
 
   return api;
 }
@@ -30,7 +37,24 @@ async function getClientDetails(client) {
   };
 }
 
+/**
+ * Gets the current user identity (stored in the file) and returns it.
+ */
+const generateIdentity = () => {
+  const keyring = new Keyring({ type: 'sr25519' });
+  const json = JSON.parse(fs.readFileSync('private_keys/rata.json').toString());
+
+  const identity = keyring.addFromJson(json);
+  identity.decodePkcs8(Config.CENNZNET_RATA_PWD);
+
+  return identity;
+};
+
+
 export default {
+  accountAddress,
+  collectionId,
   createClient,
-  getClientDetails
-}
+  getClientDetails,
+  generateIdentity,
+};
