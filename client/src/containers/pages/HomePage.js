@@ -1,7 +1,9 @@
 import React from 'react'
 import LogoImage from "../../components/LogoImage.js"
+import DogVideo from "../../resources/dog.mp4"
+import FoxVideo from "../../resources/fox.mp4"
+import KoalaVideo from "../../resources/koala.mp4"
 import {
-  Grid,
   Typography,
   Button,
   makeStyles,
@@ -9,10 +11,6 @@ import {
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        color: 'blue',
-    },
-
     navButton: {
         backgroundColor: "transparent",
         borderColor: "#7289DA",
@@ -65,6 +63,27 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 540,
         marginLeft: 380,
         borderRadius: 16,
+    },
+
+    dog: {
+        position: "fixed",
+        marginTop: 160,
+        marginLeft: 850,
+        transform: "rotate(-35deg)",
+    },
+
+    fox: {
+        position: "fixed",
+        marginTop: 240,
+        marginLeft: 1100,
+        transform: "rotate(35deg)",
+    },
+
+    koala: {
+        position: "fixed",
+        marginTop: 360,
+        marginLeft: 870,
+        transform: "rotate(-10deg)",
     },
 
 }));
@@ -127,6 +146,21 @@ export default function HomePage() {
                             Get Started
                         </Typography>
                     </Button>
+                </div>
+
+                <div>
+                <video className={classes.dog} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+                    <source src={DogVideo} type={'video/mp4'} />
+                </video>
+
+                <video className={classes.fox} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+                    <source src={FoxVideo} type={'video/mp4'} />
+                </video>
+
+                <video className={classes.koala} autoPlay={true} muted={true} width={270} height={270} loop={true}>
+                    <source src={KoalaVideo} type={'video/mp4'} />
+                </video>
+
                 </div>
 
             </div>
