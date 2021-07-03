@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import {
-  AppBar, Box, Button, CircularProgress, Grid, LinearProgress, makeStyles, Typography,
+  AppBar,
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  LinearProgress,
+  makeStyles,
+  Typography,
 } from '@material-ui/core';
 
 import petVideo from '../../resources/pet.mp4';
@@ -27,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   bg: {
-    backgroundColor: 'black',
+    backgroundColor: '#2C2F33',
     height: '100vh',
     width: '100vw',
     backgroundPosition: 'center',
@@ -89,12 +96,11 @@ const StyledBattery = styled(LinearProgress)`
 
   &.MuiLinearProgress-root {
     overflow: hidden;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
   }
 
   .MuiLinearProgress-bar {
-
-    background-color: ${(props) => getColorForPercentage(props.level / 100)};;
+    background-color: ${(props) => getColorForPercentage(props.level / 100)};
   }
 `;
 
@@ -105,7 +111,6 @@ const TopBox = styled(Box)`
   transform: translateX(-50%);
   color: white;
 `;
-
 
 export default function IndexPage() {
   const [pet, setPet] = useState({});
@@ -123,7 +128,6 @@ export default function IndexPage() {
     //   let resObject = await res.json();
     //
     // });
-
   }, []);
 
   const classes = useStyles();
@@ -135,7 +139,6 @@ export default function IndexPage() {
   const clickFeed = () => {
     setPet({ ...pet, energyLevel: Math.min(pet.energyLevel + 10, 100) });
   };
-
 
   return (
     <div className={classes.bg}>
@@ -162,41 +165,53 @@ export default function IndexPage() {
       </div>
 
       <TopBox>
-        <Typography variant={'h4'}>
-          {pet.name}
-        </Typography>
+        <Typography variant={'h4'}>{pet.name}</Typography>
       </TopBox>
 
-      <video className={classes.petVideo} autoPlay={true} muted={true} width={350} height={350} loop={true}>
+      <video
+        className={classes.petVideo}
+        autoPlay={true}
+        muted={true}
+        width={350}
+        height={350}
+        loop={true}
+      >
         <source src={petVideo} type={'video/mp4'} />
       </video>
 
       <Box className={classes.bottomOptions}>
-        {
-          pet.name ? (
-            <Grid container>
-              <Grid item xs={4}>
-                <Button className={classes.optionButton} onClick={clickFeed}>
-                  Feed Me
-                </Button>
-              </Grid>
-
-              <Grid item xs={4}>
-                <StyledBattery level={pet.energyLevel} className={classes.battery} variant="determinate"
-                               value={pet.energyLevel} />
-                <Typography variant={'body2'} className={classes.batteryPct}>{pet.energyLevel}%</Typography>
-              </Grid>
-
-              <Grid item xs={4}>
-                <Button className={classes.optionButton} onClick={() => window.location = '/market'}>
-                  Market
-                </Button>
-              </Grid>
-
+        {pet.name ? (
+          <Grid container>
+            <Grid item xs={4}>
+              <Button className={classes.optionButton} onClick={clickFeed}>
+                Feed Me
+              </Button>
             </Grid>
-          ) : <CircularProgress />
-        }
 
+            <Grid item xs={4}>
+              <StyledBattery
+                level={pet.energyLevel}
+                className={classes.battery}
+                variant="determinate"
+                value={pet.energyLevel}
+              />
+              <Typography variant={'body2'} className={classes.batteryPct}>
+                {pet.energyLevel}%
+              </Typography>
+            </Grid>
+
+            <Grid item xs={4}>
+              <Button
+                className={classes.optionButton}
+                onClick={() => (window.location = '/market')}
+              >
+                Market
+              </Button>
+            </Grid>
+          </Grid>
+        ) : (
+          <CircularProgress />
+        )}
       </Box>
 
       <div className={classes.strip} />
