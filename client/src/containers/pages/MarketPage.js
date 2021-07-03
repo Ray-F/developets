@@ -68,6 +68,16 @@ export default function MarketPage() {
     window.location = '/';
   };
 
+  const subtractTokens = (cost) => {
+    setTokens(tokens-cost);
+  }
+
+  const handleUnmount = (index) => {
+    console.log('handle unmount' + index);
+    items.splice(index, 1);
+    setItems(items);
+  }
+
   return (
     <React.Fragment>
       <div className={classes.appBar}>
@@ -104,10 +114,14 @@ export default function MarketPage() {
               className={classes.gridItem}
             >
               <ItemCard
+                index={i}
                 name={item.accessory.name}
                 cost={item.accessory.cost}
                 amount={item.amount}
                 imageUrl={item.accessory.media}
+                subtractTokens={subtractTokens}
+                handleUnmount={handleUnmount}
+                tokens={tokens}
               />
             </Grid>
           );
