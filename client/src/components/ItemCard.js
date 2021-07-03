@@ -20,7 +20,11 @@ const useStyles = makeStyles({
   details: {
     display: 'flex',
     justifyContent: 'space-between',
+    color: 'white',
   },
+  button: {
+    color: 'white',
+  }
 });
 
 export default function ItemCard(props) {
@@ -32,7 +36,7 @@ export default function ItemCard(props) {
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt="Accessory"
           height="140"
           image="/static/images/cards/contemplative-reptile.jpg"
           title="Contemplative Reptile"
@@ -40,18 +44,18 @@ export default function ItemCard(props) {
         <CardContent>
           <div className={classes.details}>
             <Typography variant="h5" component="h2">
-              {props.name}
+                {props.name} x {props.amount}
             </Typography>
             <Typography variant="h5" component="h2">
-              {props.cost}
+              💸{props.cost}
             </Typography>
           </div>
         </CardContent>
       </CardActionArea>
       <CardActions>
-          <Button size="small" color="#FFFFFF">
-            Purchase
-          </Button>
+        <Button size="small" className={classes.button}>
+          Purchase
+        </Button>
       </CardActions>
     </Card>
   );
