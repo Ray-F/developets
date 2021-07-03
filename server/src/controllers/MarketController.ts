@@ -72,7 +72,7 @@ const getMarketplace = async (req, res) => {
 
   return res.json(
     {
-      tokens: await coinRepo.getCoin(),
+      tokens: (await coinRepo.getCoinAndEnergy()).coin,
       accessories: <MarketAccessory[]> accessories,
     },
   );
