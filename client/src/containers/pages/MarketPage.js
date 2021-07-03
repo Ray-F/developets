@@ -10,6 +10,11 @@ import LogOut from '../../components/LogOut';
 import styled from 'styled-components';
 import Strip from '../../components/Strip';
 
+import {
+  web3Accounts,
+  web3Enable,
+} from '@polkadot/extension-dapp';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     color: 'red',
@@ -46,16 +51,25 @@ export default function MarketPage() {
 
   const [items, setItems] = useState([]);
   const [tokens, setTokens] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [accountData, setAccountData] = useState();
 
   useEffect(() => {
     fetch(`/api/market?orgId=${orgId}`, { method: 'GET' })
       .then(async (res) => {
         const resObject = await res.json();
+        console.log(resObject);
+
         setItems(resObject.accessories);
         setTokens(resObject.tokens);
-        setLoading(false);
-        console.log(resObject);
+        console.log(resObject.accessories);
+
+        // during data blockchain fetch get address of wallet aswell
+        const allInjected = await web3Enable('my cool dapp');
+        const allAccounts = await web3Accounts();
+        console.log(allAccounts);
+
+        // take the first account from the list
+        setAccountData(allAccounts[0]);
       });
   }, []);
 
@@ -106,6 +120,8 @@ export default function MarketPage() {
                   subtractTokens={subtractTokens}
                   handleUnmount={handleUnmount}
                   tokens={tokens}
+                  accountData={accountData}
+                  accessoryId={item.accessory.accessoryId}
                 />
               </Grid>
             );

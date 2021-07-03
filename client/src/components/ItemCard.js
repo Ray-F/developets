@@ -53,13 +53,28 @@ export default function ItemCard(props) {
       props.subtractTokens(props.cost);
       setAmount(amount - 1);
 
-      // todo: need cennznet id
-      // const reqOptions = {
-      //   method: 'POST',
-      //   body: {}
-      // };
+      // testing
+      console.log({
+          orgId: props.accountData.address,
+          accessoryId: props.accessoryId,
+          accessoryCost: props.cost,
+      });
 
-      // fetch('...', reqOptions)
+      // cennz buy post request
+      const reqOptions = {
+        method: 'POST',
+        body: {
+          orgId: props.accountData.address,
+          accessoryId: props.accessoryId,
+          accessoryCost: props.cost,
+        },
+      };
+
+      fetch('api/market', reqOptions)
+        .then((res) => {
+          console.log(res);
+        });
+
     } else {
       alert("lmao broke boi");
     }
