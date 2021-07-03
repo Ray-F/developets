@@ -2,7 +2,7 @@ import { AccessoryRepository } from '../models/AccessoryRepository';
 import { GLOBAL_ORG } from '../models/Organisation';
 
 const buy = async (req, res) => {
-  const { orgId, accessoryId, accessoryCost, clientAccount } = req.query;
+  const { orgId, accessoryId, accessoryCost } = req.body;
 
   const accessoryRepo = new AccessoryRepository();
 
@@ -23,7 +23,7 @@ const buy = async (req, res) => {
     throw new Error("No accessory series found!")
   }
 
-  const transferResult = await accessoryRepo.transfer(clientAccount, accessoryId, lowestAccessorySeries)
+  const transferResult = await accessoryRepo.transfer(orgId, accessoryId, lowestAccessorySeries)
 
   // Reduce the wallet of the organisation by the cost of the accessory
   GLOBAL_ORG.coin -= accessoryCost
@@ -72,5 +72,6 @@ const getMarketplace = async (req, res) => {
 
 
 export default {
+  buy,
   getMarketplace,
 };

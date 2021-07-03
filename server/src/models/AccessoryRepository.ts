@@ -74,11 +74,11 @@ class AccessoryRepository {
     return true;
   }
 
-  async transfer(organisation: Organisation, tokenAccessory: number, tokenSeries: number) {
+  async transfer(organisation: Organisation, accessoryId: number, accessorySerialNum: number) {
     const api = await cennzService.createClient();
     const identity = cennzService.generateIdentity();
 
-    await api.tx.nft.transfer([cennzService.collectionId, tokenAccessory, tokenSeries], organisation.cennznetAddress)
+    await api.tx.nft.transfer([cennzService.collectionId, accessoryId, accessorySerialNum], organisation.cennznetAddress)
       .signAndSend(identity, {}, (res) => {
         console.log(res.toHuman());
       });
