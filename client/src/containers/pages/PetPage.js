@@ -112,21 +112,19 @@ const TopBox = styled(Box)`
 `;
 
 export default function IndexPage() {
-  const [pet, setPet] = useState({});
-
-  const mockPet = {
-    name: 'Ollie',
-    energyLevel: 10,
-  };
+  const [coins, setCoins] = useState(null);
+  const [health, setHealth] = useState(null);
 
   useEffect(() => {
-    setPet(mockPet);
+    fetch("/api/pet", { method: "GET" })
+      .then(async (res) => {
+        let resObject = await res.json();
+        
+        setCoins(resObject.coins);
+        setHealth(resObject.hp);
+        console.log(resObject);
 
-    // fetch("/api/pet", { method: "GET" })
-    // .then(async (res) => {
-    //   let resObject = await res.json();
-    //
-    // });
+      });
   }, []);
 
   const classes = useStyles();
@@ -136,12 +134,41 @@ export default function IndexPage() {
   };
 
   const clickFeed = () => {
-    setPet({ ...pet, energyLevel: Math.min(pet.energyLevel + 10, 100) });
+    if (health === 100) {
+      return;
+    }
+
+    if (coins < 5) {
+      alert("lmao broke boi");
+      return;
+    }
+
+    const newHealth = Math.min(health + 10, 100);
+    const newCoins = coins - 5;
+
+    setHealth(newHealth)
+    setCoins(newCoins);
+
+    // TODO: Post request to adjust coin
+
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        coin: newCoins,
+        hp: newHealth
+      }),
+    }
+
+    fetch('/api/pet', options)
+      .then((res) => {
+        console.log(res)
+      });
   };
 
   return (
     <div className={classes.bg}>
-      <Tokens nTokens={56} />
+      <Tokens nTokens={coins === null ? "-" : coins} />
       <div className={classes.appBar}>
         <AppBar position="static" style={{ backgroundColor: '#2C2F33' }}>
           <LogoImage />
@@ -153,7 +180,7 @@ export default function IndexPage() {
       </div>
 
       <TopBox>
-        <Typography variant={'h4'}>{pet.name}</Typography>
+        <Typography variant={'h4'}>Einstein</Typography>
       </TopBox>
 
       <video
@@ -168,7 +195,7 @@ export default function IndexPage() {
       </video>
 
       <Box className={classes.bottomOptions}>
-        {pet.name ? (
+        {coins !== null ? (
           <Grid container>
             <Grid item xs={4}>
               <Button className={classes.optionButton} onClick={clickFeed}>
@@ -178,13 +205,13 @@ export default function IndexPage() {
 
             <Grid item xs={4}>
               <StyledBattery
-                level={pet.energyLevel}
+                level={health}
                 className={classes.battery}
                 variant="determinate"
-                value={pet.energyLevel}
+                value={health}
               />
               <Typography variant={'body2'} className={classes.batteryPct}>
-                {pet.energyLevel}%
+                {health} HP
               </Typography>
             </Grid>
 
