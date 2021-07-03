@@ -18,6 +18,7 @@ import LogoImage from '../../components/LogoImage';
 import styled from 'styled-components';
 import { getColorForPercentage } from '../../util/Colour';
 import Tokens from '../../components/Tokens';
+import Strip from '../../components/Strip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,12 +33,6 @@ const useStyles = makeStyles((theme) => ({
   },
   marketButton: {
     marginRight: theme.spacing(2),
-  },
-  bg: {
-    backgroundColor: '#2C2F33',
-    height: '100vh',
-    width: '100vw',
-    backgroundPosition: 'center',
   },
   strip: {
     position: 'fixed',
@@ -214,7 +209,7 @@ export default function IndexPage() {
         )}
       </Box>
 
-      <div className={classes.strip} />
+      <Strip />
     </div>
   );
 }

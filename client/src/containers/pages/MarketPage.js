@@ -7,6 +7,7 @@ import LogoImage from '../../components/LogoImage';
 import Tokens from '../../components/Tokens';
 
 import styled from 'styled-components';
+import Strip from '../../components/Strip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,15 +22,6 @@ const useStyles = makeStyles((theme) => ({
   },
   marketButton: {
     marginRight: theme.spacing(2),
-  },
-  strip: {
-    position: 'fixed',
-    bottom: 0,
-    width: '100%',
-    height: '20px',
-    borderStyle: 'solid',
-    borderColor: '#7289DA',
-    backgroundColor: '#7289DA',
   },
   gridItem: {
     padding: '20px',
@@ -139,7 +131,7 @@ export default function MarketPage() {
         </Grid>
       </Container>
 
-      <div className={classes.strip} />
+      <Strip />
     </React.Fragment>
   );
 }
