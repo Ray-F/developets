@@ -3,11 +3,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
-const CENNZNET_RATA_PWD = process.env.CENNZNET_RATA_PWD;
-const CENNZNET_RATA_ADDRESS = process.env.CENNZNET_RATA_ADDRESS
+const CENNZNET_PWD = process.env.CENNZNET_PWD;
+const CENNZNET_ADDRESS = process.env.CENNZNET_CLIENT_KEY;
 
 export default {
-  CENNZNET_RATA_ADDRESS,
+  CENNZNET_ADDRESS,
   MONGODB_URI,
-  CENNZNET_RATA_PWD
+  CENNZNET_PWD,
 };

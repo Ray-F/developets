@@ -5,9 +5,9 @@ import Config from '../../utils/Config';
 
 const RATA_PROVIDER = 'wss://kong2.centrality.me/public/rata/ws';
 
-const collectionId = 2;
+const collectionId = 5;
 
-const accountAddress = Config.CENNZNET_RATA_ADDRESS;
+const accountAddress = Config.CENNZNET_ADDRESS;
 
 /**
  * Creates an API client to access CennzNet services.
@@ -42,10 +42,10 @@ async function getClientDetails(client) {
  */
 const generateIdentity = () => {
   const keyring = new Keyring({ type: 'sr25519' });
-  const json = JSON.parse(fs.readFileSync('private_keys/rata.json').toString());
+  const json = JSON.parse(fs.readFileSync('private_keys/cennznet_key.json').toString());
 
   const identity = keyring.addFromJson(json);
-  identity.decodePkcs8(Config.CENNZNET_RATA_PWD);
+  identity.decodePkcs8(Config.CENNZNET_PWD);
 
   return identity;
 };

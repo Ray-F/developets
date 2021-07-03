@@ -2,6 +2,7 @@ import { Keyring } from '@polkadot/keyring';
 import fs from 'fs';
 import { AccessoryRepository } from '../models/AccessoryRepository';
 
+import cennzService from '../models/cennz/CennzService';
 
 const mockAccessory = {
   name: 'Sunglasses',
@@ -11,25 +12,11 @@ const mockAccessory = {
   accessoryId: 10,
 };
 
-
-/**
- * Generates the private key (identity) for a user through their `private_key.json` key and password.
- */
-const generateIdentity = () => {
-  const keyring = new Keyring({ type: 'sr25519' });
-  const json = JSON.parse(fs.readFileSync('private_keys/rata.json').toString());
-  console.log(json);
-  const identity = keyring.addFromJson(json);
-  identity.decodePkcs8('rata');
-
-  return identity;
-};
-
 const createCollection = async (req, res, next) => {
   const api = await cennzService.createClient();
-  const identity = generateIdentity();
+  const identity = cennzService.generateIdentity();
 
-  const collectionName = 'developets-accessories-1';
+  const collectionName = 'developets-accessories-prod';
   const mdBaseUri = 'ipfs';
 
   let respCode = null;
@@ -45,7 +32,18 @@ const createCollection = async (req, res, next) => {
 const mintToken = async (req, res) => {
   const repo = new AccessoryRepository();
 
-  await repo.create(mockAccessory);
+  const accessory = {
+    name: "Top Hat",
+    media: "https://raw.githubusercontent.com/Ray-F/developets/master/docs/hat.png",
+    orgId: null,
+
+    cost: null,
+
+    accessoryId: 0,
+    accessorySeries: 0,
+  }
+
+  await repo.create(accessory)
 
   res.json("Test");
 };
