@@ -8,13 +8,13 @@ const useStyles = makeStyles((theme) => ({
   tokensPNG: {
     position: 'fixed',
     top: 70,
-    right: 250,
+    right: 270,
   },
 
   tokensNumber: {
     position: 'fixed',
     top: 80,
-    right: 310,
+    right: 330,
     color: 'white',
     fontWeight: 600,
     fontFamily: 'Rubik',
