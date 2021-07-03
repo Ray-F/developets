@@ -7,6 +7,8 @@ const router = Router();
 
 router.use('/api/pet', defaultController.getPet);
 
+router.use('/api/accessory', defaultController.getAccessory);
+
 router.use('/api', (req, res) => {
   res.send(`
     <h2>Express API</h2>

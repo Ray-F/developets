@@ -30,7 +30,7 @@ async function getClientDetails(client) {
   };
 }
 
-export default {
+export {
   createClient,
   getClientDetails,
 };
