@@ -63,11 +63,12 @@ export default function ItemCard(props) {
       // cennz buy post request
       const reqOptions = {
         method: 'POST',
-        body: {
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           orgId: props.accountData.address,
           accessoryId: props.accessoryId,
           accessoryCost: props.cost,
-        },
+        }),
       };
 
       fetch('api/market', reqOptions)
