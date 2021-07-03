@@ -64,11 +64,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   optionButton: {
-    color: '#7289DA',
-    border: '3px solid #7289DA',
-    borderRadius: '10px',
+    color: '#FFFFFF',
+    border: '4px solid #7289DA',
+    borderRadius: '16px',
+    backgroundColor: 'transparent',
+    margin: 40,
+    marginTop: 40,
 
-    width: 120,
+    width: 140,
   },
 
   batteryPct: {
@@ -179,7 +182,7 @@ export default function IndexPage() {
           <Grid container>
             <Grid item xs={4}>
               <Button className={classes.optionButton} onClick={clickFeed}>
-                Feed Me
+                <b>Feed Me</b>
               </Button>
             </Grid>
 
@@ -200,7 +203,7 @@ export default function IndexPage() {
                 className={classes.optionButton}
                 onClick={() => (window.location = '/market')}
               >
-                Market
+                <b>Market</b>
               </Button>
             </Grid>
           </Grid>
