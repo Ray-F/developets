@@ -5,6 +5,7 @@ import nohat from '../../components/images/noHat.png';
 import hat from '../../components/images/withHat.png';
 import BackButton from '../../components/BackButton.js';
 import Tokens from '../../components/Tokens';
+import LogOut from '../../components/LogOut';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -90,6 +91,7 @@ export default function InventoryPage() {
       <BackButton />
       <LogoImage />
       <Tokens nTokens={coins} />
+      <LogOut />
 
       <div className={classes.content}>
         {isHatEnabled ? (
