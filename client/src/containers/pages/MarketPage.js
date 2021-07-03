@@ -50,7 +50,7 @@ const orgId = 123;
 export default function MarketPage() {
 
   const [items, setItems] = useState([]);
-  const [tokens, setTokens] = useState(0);
+  const [tokens, setTokens] = useState(null);
   const [accountData, setAccountData] = useState();
 
   useEffect(() => {
