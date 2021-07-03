@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   tokensPNG: {
     position: 'fixed',
     top: 70,
-    right: 255,
+    right: 255
   },
 
   tokensNumber: {
