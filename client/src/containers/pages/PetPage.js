@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
-  Grid, AppBar, Toolbar, Typography, Button, IconButton, makeStyles, Box, CircularProgress, LinearProgress,
+  AppBar, Box, Button, CircularProgress, Grid, LinearProgress, makeStyles, Typography,
 } from '@material-ui/core';
 
-import StoreIcon from '@material-ui/icons/Store';
-
 import petVideo from '../../resources/pet.mp4';
+
 import LogoImage from '../../components/LogoImage';
 
 import styled from 'styled-components';
@@ -93,8 +92,8 @@ const StyledBattery = styled(LinearProgress)`
   }
 
   .MuiLinearProgress-bar {
-    
-    background-color: ${(props) => getColorForPercentage(props.level / 100)};; 
+
+    background-color: ${(props) => getColorForPercentage(props.level / 100)};;
   }
 `;
 
@@ -166,7 +165,7 @@ export default function IndexPage() {
         </Typography>
       </TopBox>
 
-      <video className={classes.petVideo} autoPlay={true} muted={true} width={400} height={400} loop={true}>
+      <video className={classes.petVideo} autoPlay={true} muted={true} width={350} height={350} loop={true}>
         <source src={petVideo} type={'video/mp4'} />
       </video>
 
@@ -181,12 +180,13 @@ export default function IndexPage() {
               </Grid>
 
               <Grid item xs={4}>
-                <StyledBattery level={pet.energyLevel} className={classes.battery} variant="determinate" value={pet.energyLevel} />
+                <StyledBattery level={pet.energyLevel} className={classes.battery} variant="determinate"
+                               value={pet.energyLevel} />
                 <Typography variant={'body2'} className={classes.batteryPct}>{pet.energyLevel}%</Typography>
               </Grid>
 
               <Grid item xs={4}>
-                <Button className={classes.optionButton} onClick={() => window.location = "/market"}>
+                <Button className={classes.optionButton} onClick={() => window.location = '/market'}>
                   Market
                 </Button>
               </Grid>
