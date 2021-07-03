@@ -16,7 +16,7 @@ class AccessoryRepository {
       const accessoryId = parseInt(info.tokenId["seriesId"])
 
       // To filter out old accessories created for testing
-      return ([2, 3, 4].indexOf(accessoryId) !== -1)
+      return ([0, 2, 3].indexOf(accessoryId) !== -1)
     }).map((info) => {
       const { tokenId, attributes, owner } = info;
 
@@ -49,7 +49,7 @@ class AccessoryRepository {
 
     const collectionId = cennzService.collectionId;
     const owner = cennzService.accountAddress;
-    const quantity = 5;
+    const quantity = 8;
 
     /*
      * These attributes are saved inside the NFT that is minted, and cannot be changed.
