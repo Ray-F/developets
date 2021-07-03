@@ -93,7 +93,7 @@ export default function MarketPage() {
     <React.Fragment>
       <Box className={classes.navSection}>
         <LogoImage />
-        <Tokens nTokens={tokens === 0 ? "-" : tokens} />
+        <Tokens nTokens={tokens !== null ? tokens : "-"} />
         <div>
         <LogOut></LogOut>
         </div>
