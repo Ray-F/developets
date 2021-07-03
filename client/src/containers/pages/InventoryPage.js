@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import LogoImage from "../../components/LogoImage.js";
 import nohat from '../../components/images/noHat.png';
 import hat from '../../components/images/withHat.png';
+import BackButton from '../../components/BackButton.js';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -68,9 +69,10 @@ export default function InventoryPage() {
 
   return (
     <div className={classes.container}>
+              <BackButton />
+
       <div className={classes.logoPNG}>
         <LogoImage></LogoImage>
-
         {isHatEnabled ? (
           <img src={hat} className={classes.hat} />
         ) : (
