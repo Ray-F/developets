@@ -7,7 +7,7 @@ import BackButton from '../../components/BackButton.js';
 
 
 const useStyles = makeStyles((theme) => ({
-  
+
   container: {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     marginTop: 201,
     marginLeft: 100,
+    width: 1000
 
   },
 
@@ -36,16 +37,17 @@ const useStyles = makeStyles((theme) => ({
     position:'absolute',
     marginTop: 199,
     marginLeft: 101,
+    width: 1000
 
   },
 
   hitbox: {
     position: 'absolute',
     backgroundColor: 'rgba(0, 0, 0, 1)',
-    width: 121,
-    left: 930,
+    width: 89,
+    left: 708,
     top: 200,
-    height: 121,
+    height: 89,
     opacity: 0,
     transitionDuration: '0.2s',
 
