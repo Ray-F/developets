@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
       transitionDuration: '0.2s',
       opacity: 0.5
     }
+  },
+
+  content: {
+    transform: 'translateY(-30px)'
   }
 
 }));
@@ -84,10 +88,10 @@ export default function InventoryPage() {
   return (
     <div className={classes.container}>
       <BackButton />
+      <LogoImage />
       <Tokens nTokens={coins} />
 
-      <div className={classes.logoPNG}>
-        <LogoImage />
+      <div className={classes.content}>
         {isHatEnabled ? (
           <img src={hat} className={classes.hat} />
         ) : (

@@ -19,6 +19,7 @@ import styled from 'styled-components';
 import { getColorForPercentage } from '../../util/Colour';
 import Tokens from '../../components/Tokens';
 import Strip from '../../components/Strip';
+import LoadingBox from '../../components/LoadingBox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -127,12 +128,16 @@ const SBoxRelative = styled(Box)`
   top: -150px;
 `;
 
+const PetName = styled(Typography)`
+  font-family: "Rubik", sans-serif;
+`;
+
 export default function IndexPage() {
   const [coins, setCoins] = useState(null);
   const [health, setHealth] = useState(null);
 
   useEffect(() => {
-    fetch("/api/pet", { method: "GET" })
+    fetch('/api/pet', { method: 'GET' })
       .then(async (res) => {
         let resObject = await res.json();
 
@@ -155,14 +160,14 @@ export default function IndexPage() {
     }
 
     if (coins < 5) {
-      alert("lmao broke boi");
+      alert('lmao broke boi');
       return;
     }
 
     const newHealth = Math.min(health + 10, 100);
     const newCoins = coins - 5;
 
-    setHealth(newHealth)
+    setHealth(newHealth);
     setCoins(newCoins);
 
     // TODO: Post request to adjust coin
@@ -171,20 +176,20 @@ export default function IndexPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        coin: newCoins,
-        hp: newHealth
-      }),
-    }
+                             coin: newCoins,
+                             hp: newHealth,
+                           }),
+    };
 
     fetch('/api/pet', options)
       .then((res) => {
-        console.log(res)
+        console.log(res);
       });
   };
 
   return (
     <div className={classes.bg}>
-      <Tokens nTokens={coins === null ? "-" : coins} />
+      <Tokens nTokens={coins} />
       <div className={classes.appBar}>
         <AppBar position="static" style={{ backgroundColor: '#2C2F33' }}>
           <LogoImage />
@@ -192,23 +197,30 @@ export default function IndexPage() {
       </div>
 
       <div>
-        <LogOut></LogOut>
+        <LogOut />
       </div>
 
-      <TopBox>
-        <Typography variant={'h4'}>Einstein</Typography>
-      </TopBox>
+      {
+        coins !== null ? (
+          <>
+            <TopBox>
+              <PetName variant={'h4'}>Einstein</PetName>
+            </TopBox>
 
-      <video
-        className={classes.petVideo}
-        autoPlay={true}
-        muted={true}
-        width={350}
-        height={350}
-        loop={true}
-      >
-        <source src={petVideo} type={'video/mp4'} />
-      </video>
+            <video
+              className={classes.petVideo}
+              autoPlay={true}
+              muted={true}
+              width={350}
+              height={350}
+              loop={true}
+            >
+              <source src={petVideo} type={'video/mp4'} />
+            </video>
+          </>
+        ) : <LoadingBox loadingMsg={"Loading your favourite pet"} />
+      }
+
 
       <Box className={classes.bottomOptions}>
         {coins !== null ? (
@@ -249,9 +261,8 @@ export default function IndexPage() {
               </Button>
             </Grid>
           </Grid>
-        ) : (
-          <CircularProgress />
-        )}
+        ) : null
+        }
       </Box>
 
       <Strip />

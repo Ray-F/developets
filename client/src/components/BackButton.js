@@ -9,7 +9,7 @@ const useStyles = makeStyles((themes) => ({
     border: '4px solid #7289DA',
     borderRadius: '16px',
     backgroundColor: 'transparent',
-    marginTop: 640,
+    bottom: 60,
     width: 140,
     left: '50%',
     transform: 'translateX(-50%)',

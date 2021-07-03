@@ -5,15 +5,16 @@ import FoxVideo from '../../resources/fox.mp4';
 import KoalaVideo from '../../resources/koala.mp4';
 import { Typography, Button, makeStyles, Box } from '@material-ui/core';
 import Strip from '../../components/Strip';
+import ScrollAnimation from 'react-animate-on-scroll';
+
 
 const useStyles = makeStyles((theme) => ({
   navButton: {
     backgroundColor: 'transparent',
-    borderColor: '#7289DA',
-    borderWidth: 4,
+    borderBottom: '3px solid white',
+    padding: '0 0 5px 0',
     margin: 40,
     marginTop: 40,
-    borderRadius: 16,
   },
 
   boxRight: {
@@ -32,12 +33,21 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontFamily: 'Rubik',
     fontSize: 18,
+
+    padding: 10,
+    textTransform: 'capitalize',
   },
 
   whiteBlurbText: {
     color: 'white',
     fontFamily: 'Rubik',
     fontSize: 27,
+  },
+
+  whiteBlurbBody: {
+    color: 'white',
+    fontFamily: 'Rubik',
+    fontSize: 18,
   },
 
   blurbBox: {
@@ -56,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     borderColor: '#7289DA',
     borderWidth: 4,
-    marginTop: 540,
+    marginTop: 500,
     marginLeft: 380,
     borderRadius: 16,
   },
@@ -115,35 +125,39 @@ export default function HomePage() {
         </div>
 
         <div>
-          <LogoImage></LogoImage>
+          <LogoImage />
         </div>
 
         <div>
           <Box className={classes.blurbBox} width="40%">
-            <Typography className={classes.whiteBlurbText}>
-              Introduce an interactive virtual team pet to your workplace
-            </Typography>
+            <ScrollAnimation animateIn={'animate__fadeInDown'} duration={1}>
+              <Typography className={classes.whiteBlurbText}>
+                Introduce an interactive virtual team pet to your workplace
+              </Typography>
+            </ScrollAnimation>
           </Box>
 
           <Box className={classes.bodyBox} width="40%">
-            <Typography className={classes.whiteButtonText}>
-              Developets is the best platform to encourage better team
-              performance and motivation through a fun and interactive mascot.
-            </Typography>
+            <ScrollAnimation animateIn={'animate__fadeInUp'} duration={1}>
+              <Typography className={classes.whiteBlurbBody}>
+                Developets is the best platform to encourage better team
+                performance and motivation through a fun and interactive mascot.
+              </Typography>
+            </ScrollAnimation>
           </Box>
         </div>
 
-        <div>
-          <Button
-            className={classes.startButton}
-            variant="outlined"
-            onClick={getStarted}
-          >
-            <Typography className={classes.whiteButtonText}>
-              Get Started
-            </Typography>
-          </Button>
-        </div>
+        <Button
+          className={classes.startButton}
+          variant="outlined"
+          onClick={getStarted}
+        >
+
+          <Typography className={classes.whiteButtonText}>
+            Get Started
+          </Typography>
+
+        </Button>
 
         <div>
           <video

@@ -6,6 +6,7 @@ import {
   Container,
   Grid,
   makeStyles,
+  Typography,
 } from '@material-ui/core';
 
 import ItemCard from '../../components/ItemCard';
@@ -18,6 +19,7 @@ import styled from 'styled-components';
 import Strip from '../../components/Strip';
 
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
+import LoadingBox from '../../components/LoadingBox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,19 +43,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SCircularProgress = styled(CircularProgress)`
-  position: fixed;
-  left: calc(50% - 15px);
-  top: calc(50% - 15px);
-
-  color: white;
-`;
 
 const orgId = 123;
 
 export default function MarketPage() {
   const [items, setItems] = useState([]);
-  const [tokens, setTokens] = useState(0);
+  const [tokens, setTokens] = useState(null);
   const [accountData, setAccountData] = useState();
 
   useEffect(() => {
@@ -95,16 +90,16 @@ export default function MarketPage() {
     <React.Fragment>
       <Box className={classes.navSection}>
         <LogoImage />
-        <Tokens nTokens={tokens !== null ? tokens : '-'} />
+        <Tokens nTokens={tokens} />
         <div>
-          <LogOut></LogOut>
+          <LogOut />
         </div>
       </Box>
 
       <Container maxWidth={'lg'}>
         <Grid container>
           {items.length === 0 ? (
-            <SCircularProgress />
+            <LoadingBox loadingMsg={"Retrieving NFT accessories from the CennzNet"} />
           ) : (
             items.map((item, i) => {
               return (
