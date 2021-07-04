@@ -137,32 +137,16 @@ export default function IndexPage() {
   const [health, setHealth] = useState(null);
 
   useEffect(() => {
-    const fetchMethod = () => {
-      fetch('/api/pet', { method: 'GET' })
-        .then(async (res) => {
-          let resObject = await res.json();
+    fetch('/api/pet', { method: 'GET' })
+      .then(async (res) => {
+        let resObject = await res.json();
 
-          const newHealth = resObject.hp;
-
-          if (health !== null && newHealth < health) {
-            alert("Detected bad practice, Einstein got hurt :(")
-          }
-
-          setCoins(resObject.coins);
-          setHealth(resObject.hp);
-        });
-    }
-
-    fetchMethod();
-
-    setInterval(fetchMethod, 3000);
+        setCoins(resObject.coins);
+        setHealth(resObject.hp);
+      });
   }, []);
 
   const classes = useStyles();
-
-  const openMarket = () => {
-    window.location = '/market';
-  };
 
   const clickFeed = () => {
     if (health === 100) {
@@ -228,7 +212,7 @@ export default function IndexPage() {
               <source src={petVideo} type={'video/mp4'} />
             </video>
           </>
-        ) : <LoadingBox loadingMsg={"Loading your favourite pet"} />
+        ) : <LoadingBox loadingMsg={'Loading your favourite pet'} />
       }
 
 
