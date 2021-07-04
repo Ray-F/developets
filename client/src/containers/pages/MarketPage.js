@@ -61,7 +61,7 @@ export default function MarketPage() {
       console.log(resObject.accessories);
 
       // during data blockchain fetch get address of wallet aswell
-      const allInjected = await web3Enable('my cool dapp');
+      const allInjected = await web3Enable('Developets NFT Market');
       const allAccounts = await web3Accounts();
       console.log(allAccounts);
 
