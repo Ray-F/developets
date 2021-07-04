@@ -142,9 +142,9 @@ export default function IndexPage() {
         .then(async (res) => {
           let resObject = await res.json();
 
-          const newCoins = resObject.coins;
+          const newHealth = resObject.hp;
 
-          if (coins !== null && newCoins < coins) {
+          if (health !== null && newHealth < health) {
             alert("Detected bad practice, Einstein got hurt :(")
           }
 
