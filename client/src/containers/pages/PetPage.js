@@ -137,15 +137,25 @@ export default function IndexPage() {
   const [health, setHealth] = useState(null);
 
   useEffect(() => {
-    fetch('/api/pet', { method: 'GET' })
-      .then(async (res) => {
-        let resObject = await res.json();
+    const fetchMethod = () => {
+      fetch('/api/pet', { method: 'GET' })
+        .then(async (res) => {
+          let resObject = await res.json();
 
-        setCoins(resObject.coins);
-        setHealth(resObject.hp);
-        console.log(resObject);
+          const newCoins = resObjects.coins;
 
-      });
+          if (coins !== null && newCoins < coins) {
+            alert("Detected bad practice, Einstein got hurt :(")
+          }
+
+          setCoins(resObject.coins);
+          setHealth(resObject.hp);
+        });
+    }
+
+    fetchMethod();
+
+    setInterval(fetchMethod, 3000);
   }, []);
 
   const classes = useStyles();
