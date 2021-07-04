@@ -142,7 +142,7 @@ export default function IndexPage() {
         .then(async (res) => {
           let resObject = await res.json();
 
-          const newCoins = resObjects.coins;
+          const newCoins = resObject.coins;
 
           if (coins !== null && newCoins < coins) {
             alert("Detected bad practice, Einstein got hurt :(")
