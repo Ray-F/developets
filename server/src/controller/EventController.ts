@@ -5,8 +5,10 @@ import { mongoService } from '../model/mongodb/MongoService';
 const githubEvent = async (req, res) => {
   const petRepo = new PetRepository(mongoService);
 
+  console.log(req.body);
+
   // Positive number corresponding to number of HP deducted (cannot kill pet)
-  const linearPenalty = parseInt('10');
+  const linearPenalty = parseInt('0');
 
   if (linearPenalty === 0) {
     res.json({

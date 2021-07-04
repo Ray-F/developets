@@ -43,7 +43,7 @@ export default function LogoImage() {
                 Developets
             </Typography>
             <Typography className={classes.whiteText} variant="h6">
-                Your favourite team companion
+                Your favourite dev-team companion
             </Typography>
     </div>
     )
