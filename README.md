@@ -1,15 +1,9 @@
 # Developets
 
-Based on a template repository used to quickly bootstrap MERN applications.
+Developets is a [DEVS – Developers Society](https://www.facebook.com/devsuoa) 48 Hour Hackathon project.
 
-### Compatability Notes:
-- Inside `server/package.json`, the `clean` script will not work correctly on Windows machines. Refer to this [stack overflow link](https://stackoverflow.com/questions/97875/rm-rf-equivalent-for-windows) to find out the equivalent `Cmd.exe` or `PowerShell` command.
+_On Developets, dev teams can collectively own a virtual pet that's affected by the project quality based on your team's code quality. When a new person joins the team, they will learn its code standards quickly as the seniors will be sentimental about the team pet and help the junior not to kill it._
 
-### Setup
-- You should ideally be using yarn version `14.5.*` to make this repository work.
-- Run `yarn install` in the root directory
-- Run `yarn run init` in the root directory (installs dependencies for `client` and `server` directories)
+Developets won 1st place, a [Centrality.ai](https://www.linkedin.com/posts/centrality.ai_cennznet-nft-unhacktheworld-activity-6817584358178865152-N8pm/) special prize and was also awarded best technical implementation.
 
-### Run
-- Run `yarn run dev` in the root directory to start both `client` and `server` environments
-- Alternatively, run `yarn run start` (inside `client` directory) and `yarn run dev` (`server` directory) in separate terminals to have more fine grained control
+<img width="1385" alt="developets_screenshot" src="https://user-images.githubusercontent.com/19633284/124552186-4e449200-de87-11eb-8d62-237a762ceed7.png">
